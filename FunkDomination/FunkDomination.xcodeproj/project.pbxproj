@@ -16,6 +16,7 @@
 		1CEE861726D5671700303560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CEE861626D5671700303560 /* Assets.xcassets */; };
 		1CEE862026D56BC700303560 /* TabelaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE861F26D56BC700303560 /* TabelaViewController.swift */; };
 		1CEE862326D56D8700303560 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE862226D56D8700303560 /* Upgrade.swift */; };
+		1CEE862726D57DF200303560 /* UpgradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE862626D57DF200303560 /* UpgradeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1CEE861826D5671700303560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CEE861F26D56BC700303560 /* TabelaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaViewController.swift; sourceTree = "<group>"; };
 		1CEE862226D56D8700303560 /* Upgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
+		1CEE862626D57DF200303560 /* UpgradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +81,8 @@
 		1CEE861E26D56AC400303560 /* Tabela */ = {
 			isa = PBXGroup;
 			children = (
-				1CEE861F26D56BC700303560 /* TabelaViewController.swift */,
+				1CEE862526D57D6500303560 /* Controller */,
+				1CEE862426D57D5A00303560 /* View */,
 			);
 			path = Tabela;
 			sourceTree = "<group>";
@@ -90,6 +93,22 @@
 				1CEE862226D56D8700303560 /* Upgrade.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1CEE862426D57D5A00303560 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1CEE862626D57DF200303560 /* UpgradeTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1CEE862526D57D6500303560 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1CEE861F26D56BC700303560 /* TabelaViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +186,7 @@
 				1CEE862026D56BC700303560 /* TabelaViewController.swift in Sources */,
 				1CEE861226D5671500303560 /* GameViewController.swift in Sources */,
 				1CEE860A26D5671500303560 /* AppDelegate.swift in Sources */,
+				1CEE862726D57DF200303560 /* UpgradeTableViewCell.swift in Sources */,
 				1CEE862326D56D8700303560 /* Upgrade.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

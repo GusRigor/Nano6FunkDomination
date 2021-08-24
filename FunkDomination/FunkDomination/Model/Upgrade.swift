@@ -29,7 +29,7 @@ class UpgradeDAO: NSObject{
         let oakleyOculos  = Upgrade("Sortear óculos oakley", Url: "", pessoas: 100)
         let tiktoc  = Upgrade("Fazer TikVoc", Url: "", pessoas: 500)
         let trend  = Upgrade("Lançar trend", Url: "", pessoas: 1000)
-        let convertMandraka = Upgrade("Converter pessoas em Mandraka", Url: "", pessoas: 5000)
+        let convertMandraka = Upgrade("Converter Mandrakas", Url: "", pessoas: 5000)
         let praCima = Upgrade("Arraste para cima", Url: "", pessoas: 10000)
         let vrauTube = Upgrade("Canal no VrauTube", Url: "", pessoas: 50000)
         let clip = Upgrade("Lançar um clipe", Url: "", pessoas: 100000)

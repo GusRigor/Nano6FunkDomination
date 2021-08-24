@@ -25,11 +25,15 @@ class TabelaViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UpgradeTableViewCell
         let upgrade = listaUpgrades[indexPath.row]
-        cell.textLabel?.text = upgrade.titulo
+        cell.configCelula(upgrade: upgrade)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(listaUpgrades[indexPath.row])
     }
     
 }
