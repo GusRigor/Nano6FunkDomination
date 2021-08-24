@@ -14,6 +14,7 @@
 		1CEE861226D5671500303560 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE861126D5671500303560 /* GameViewController.swift */; };
 		1CEE861526D5671500303560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CEE861326D5671500303560 /* Main.storyboard */; };
 		1CEE861726D5671700303560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CEE861626D5671700303560 /* Assets.xcassets */; };
+		1CEE862026D56BC700303560 /* TabelaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE861F26D56BC700303560 /* TabelaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1CEE861426D5671500303560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1CEE861626D5671700303560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CEE861826D5671700303560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CEE861F26D56BC700303560 /* TabelaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +65,20 @@
 				1CEE860D26D5671500303560 /* Actions.sks */,
 				1CEE860F26D5671500303560 /* GameScene.swift */,
 				1CEE861126D5671500303560 /* GameViewController.swift */,
+				1CEE861E26D56AC400303560 /* Tabela */,
 				1CEE861326D5671500303560 /* Main.storyboard */,
 				1CEE861626D5671700303560 /* Assets.xcassets */,
 				1CEE861826D5671700303560 /* Info.plist */,
 			);
 			path = FunkDomination;
+			sourceTree = "<group>";
+		};
+		1CEE861E26D56AC400303560 /* Tabela */ = {
+			isa = PBXGroup;
+			children = (
+				1CEE861F26D56BC700303560 /* TabelaViewController.swift */,
+			);
+			path = Tabela;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CEE861026D5671500303560 /* GameScene.swift in Sources */,
+				1CEE862026D56BC700303560 /* TabelaViewController.swift in Sources */,
 				1CEE861226D5671500303560 /* GameViewController.swift in Sources */,
 				1CEE860A26D5671500303560 /* AppDelegate.swift in Sources */,
 			);
