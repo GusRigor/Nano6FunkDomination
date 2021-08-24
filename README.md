@@ -1,0 +1,2 @@
+# nano6
+ funkDominationIdle
