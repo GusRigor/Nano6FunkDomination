@@ -31,7 +31,7 @@ class GameScene: SKScene {
      let labelMenuCloseButton = SKLabelNode(text: "X")
      
      
-     let menu = SKSpriteNode(color: .green, size: .init(width: 600, height: 600))
+     let menu = SKSpriteNode(color: .green, size: .init(width: 650, height: 600))
      
      
      override func sceneDidLoad() {
@@ -71,11 +71,19 @@ class GameScene: SKScene {
           
           let buttonMenu = SKButtonNode(image: imageMenuButton, label: labelMenuButton, action: {
                if !self.menuOpen{
-                    buttonClose.position = CGPoint(x: 0, y: 0)
+                    buttonClose.position = CGPoint(x: 0, y: -250)
                     self.menu.isHidden = false
                     self.menuOpen = true
                }
           })
+        
+        let menuLabel = SKLabelMenuNode("Publicação nas redes sociais R$ 10", position: .init(x: 0, y: 300), action: {
+            if self.numDinheiro > 10{
+                self.numDinheiro -= 10
+                self.coefGanhoSeguidores += 1
+                self.labelDinheiro.text = "\(self.numDinheiro)"
+            }
+        })
         
           button.position = CGPoint(x: 0, y: -500)
           buttonMenu.position = CGPoint(x: -200, y: -500)
@@ -83,6 +91,7 @@ class GameScene: SKScene {
           labelSeguidores.position = CGPoint(x: -300, y: 500)
           self.addChild(menu)
           menu.addChild(buttonClose)
+        menu.addChild(menuLabel)
           self.addChild(button)
           self.addChild(buttonMenu)
           self.addChild(labelDinheiro)
