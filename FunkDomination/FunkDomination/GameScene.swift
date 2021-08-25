@@ -9,80 +9,94 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+     
+     var menuOpen = false
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
-    override func didMove(to view: SKView) {
+     var numDinheiro = 0.0
+     var numSeguidores = 0.0
+     var coefGanhoDinheiro = 1.0
+     var coefGanhoSeguidores = 1.0
+     var timer = TimeInterval.init(10000000)
+
+     
+     let imageButton = SKSpriteNode(color: .blue, size: .init(width: 100, height: 100))
+     let labelButton = SKLabelNode(text: "+")
+     let labelDinheiro = SKLabelNode(text: "0")
+     let labelSeguidores = SKLabelNode(text: "0")
+     
+     let imageMenuButton = SKSpriteNode(color: .blue, size: .init(width: 100, height: 100))
+     let labelMenuButton = SKLabelNode(text: "Menu")
+     
+     let imageMenuCloseButton = SKSpriteNode(color: .black, size: .init(width: 100, height: 100))
+     let labelMenuCloseButton = SKLabelNode(text: "X")
+     
+     
+     let menu = SKSpriteNode(color: .green, size: .init(width: 600, height: 600))
+     
+     
+     override func sceneDidLoad() {
+          super.sceneDidLoad()
+          menu.position = CGPoint(x: 0, y: 0)
+          menu.isHidden = true
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+          labelButton.fontSize = 45
+          labelButton.verticalAlignmentMode = .center
+          labelButton.fontColor = .white
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+          labelDinheiro.fontSize = 50
+          labelDinheiro.verticalAlignmentMode = .center
+          labelDinheiro.fontColor = .white
+          
+          labelSeguidores.fontSize = 50
+          labelSeguidores.verticalAlignmentMode = .center
+          labelSeguidores.fontColor = .white
+          
+          labelMenuButton.fontSize = 40
+          labelMenuButton.verticalAlignmentMode = .center
+          labelMenuButton.fontColor = .white
+          
+          labelMenuCloseButton.fontSize = 50
+          labelMenuCloseButton.verticalAlignmentMode = .center
+          labelMenuCloseButton.fontColor = .white
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
+          let button = SKButtonNode(image: imageButton, label: labelButton, action: {
+               self.numSeguidores += 1 * self.coefGanhoSeguidores
+               self.labelSeguidores.text = "\(self.numSeguidores)"
+          })
+          
+          let buttonClose = SKButtonNode(image: self.imageMenuCloseButton, label: self.labelMenuCloseButton, action: {
+               self.menu.isHidden = true
+               self.menuOpen = false
+          })
+          
+          let buttonMenu = SKButtonNode(image: imageMenuButton, label: labelMenuButton, action: {
+               if !self.menuOpen{
+                    buttonClose.position = CGPoint(x: 0, y: 0)
+                    self.menu.isHidden = false
+                    self.menuOpen = true
+               }
+          })
         
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+          button.position = CGPoint(x: 0, y: -500)
+          buttonMenu.position = CGPoint(x: -200, y: -500)
+          labelDinheiro.position = CGPoint(x: 300, y: 500)
+          labelSeguidores.position = CGPoint(x: -300, y: 500)
+          self.addChild(menu)
+          menu.addChild(buttonClose)
+          self.addChild(button)
+          self.addChild(buttonMenu)
+          self.addChild(labelDinheiro)
+          self.addChild(labelSeguidores)
     }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-    }
+     
+     override func update(_ currentTime: TimeInterval) {
+          if timer > currentTime  {
+               timer = currentTime
+          }
+          if (currentTime - timer) >= 1{
+               self.numDinheiro += self.numSeguidores * self.coefGanhoDinheiro
+               self.labelDinheiro.text = "\(numDinheiro)"
+               timer = currentTime
+          }
+     }
 }
