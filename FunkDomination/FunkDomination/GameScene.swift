@@ -21,8 +21,8 @@ class GameScene: SKScene {
     var timer = TimeInterval.init(10000000)
     
     
-    let imageButton = SKSpriteNode(color: .blue, size: .init(width: 100, height: 100))
-    let labelButton = SKLabelNode(text: "+")
+//    let imageButton = SKSpriteNode(color: .blue, size: .init(width: 100, height: 100))
+    let labelButton = SKLabelNode(text: "")
     let labelDinheiro = SKLabelNode(text: "0")
     let labelSeguidores = SKLabelNode(text: "0")
     
@@ -65,13 +65,13 @@ class GameScene: SKScene {
         let playerNode = SKSpriteNode(imageNamed: "Warrior_Idle_1")
         playerNode.position = CGPoint(x: 0, y: 0)
         playerNode.size = CGSize(width: playerNode.size.width * 10, height: playerNode.size.height * 10)
-        self.addChild(playerNode)
+        //self.addChild(playerNode)
         
         playerStateMachine = GKStateMachine(states: [
             PlayerIdle(playerNode: playerNode)
         ])
         
-        let button = SKButtonNode(image: imageButton, label: labelButton, action: {
+        let button = SKButtonNode(image: playerNode, label: labelButton, action: {
             self.numSeguidores += 1 * self.coefGanhoSeguidores
             self.labelSeguidores.text = "\(self.numSeguidores)"
         })
@@ -97,8 +97,8 @@ class GameScene: SKScene {
             }
         })
         
-        button.position = CGPoint(x: 0, y: -500)
-        buttonMenu.position = CGPoint(x: -200, y: -500)
+        button.position = CGPoint(x: 0, y: 0)
+        buttonMenu.position = CGPoint(x: 0, y: -500)
         labelDinheiro.position = CGPoint(x: 300, y: 500)
         labelSeguidores.position = CGPoint(x: -300, y: 500)
         self.addChild(menu)
