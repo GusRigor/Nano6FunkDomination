@@ -35,9 +35,15 @@ class GameScene: SKScene {
     
     let menu = SKSpriteNode(color: .green, size: .init(width: 650, height: 600))
     
-    
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        
+        let background = SKSpriteNode(imageNamed: "bg")
+        background.position = CGPoint(x: frame.midX, y: frame.midY)
+        background.size = CGSize(width: 750, height: 1334)
+        background.zPosition = -1
+        addChild(background)
+        
         menu.position = CGPoint(x: 0, y: 0)
         menu.isHidden = true
         menu.zPosition = 100
