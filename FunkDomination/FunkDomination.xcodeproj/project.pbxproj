@@ -19,6 +19,7 @@
 		1CEE864E26D6D8D700303560 /* SKLabelMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE864D26D6D8D700303560 /* SKLabelMenu.swift */; };
 		1CEE865026D7E16800303560 /* PlayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE864F26D7E16800303560 /* PlayerAction.swift */; };
 		1CEE865226D7E1B600303560 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865126D7E1B600303560 /* ArrayExtension.swift */; };
+		1CEE865426D8264800303560 /* SKLabelTelaInicial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1CEE864D26D6D8D700303560 /* SKLabelMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabelMenu.swift; sourceTree = "<group>"; };
 		1CEE864F26D7E16800303560 /* PlayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAction.swift; sourceTree = "<group>"; };
 		1CEE865126D7E1B600303560 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabelTelaInicial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				1CEE865126D7E1B600303560 /* ArrayExtension.swift */,
 				1CEE864F26D7E16800303560 /* PlayerAction.swift */,
 				1CEE864B26D6D47900303560 /* SKButton.swift */,
+				1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */,
 				1CEE864D26D6D8D700303560 /* SKLabelMenu.swift */,
 				1CEE861E26D56AC400303560 /* Tabela */,
 				1CEE861326D5671500303560 /* Main.storyboard */,
@@ -168,6 +171,7 @@
 				1CEE861026D5671500303560 /* GameScene.swift in Sources */,
 				1CEE862026D56BC700303560 /* TabelaViewController.swift in Sources */,
 				1CEE865226D7E1B600303560 /* ArrayExtension.swift in Sources */,
+				1CEE865426D8264800303560 /* SKLabelTelaInicial.swift in Sources */,
 				1CEE864E26D6D8D700303560 /* SKLabelMenu.swift in Sources */,
 				1CEE865026D7E16800303560 /* PlayerAction.swift in Sources */,
 				1CEE861226D5671500303560 /* GameViewController.swift in Sources */,
