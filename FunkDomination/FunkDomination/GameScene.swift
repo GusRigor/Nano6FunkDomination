@@ -115,7 +115,7 @@ class GameScene: SKScene {
         let labelSeguidoresCustom = SKLabelTelaInicial(fundo: self.imageFundoSeguidores, label: self.labelSeguidores, imagem: self.imageSeguidores)
         
         button.position = CGPoint(x: 0, y: 0)
-        buttonMenu.position = CGPoint(x: 0, y: -500)
+        buttonMenu.position = CGPoint(x: 295, y: -300)
         
         labelDinheiroCustom.position = CGPoint(x: 180, y: 500)
         labelSeguidoresCustom.position = CGPoint(x: -180, y: 500)
