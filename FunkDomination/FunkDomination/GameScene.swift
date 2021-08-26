@@ -10,6 +10,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var playerStateMachine: GKStateMachine?
+    
     var menuOpen = false
     
     var numDinheiro = 0.0
@@ -38,6 +40,7 @@ class GameScene: SKScene {
         super.sceneDidLoad()
         menu.position = CGPoint(x: 0, y: 0)
         menu.isHidden = true
+        menu.zPosition = 100
         
         labelButton.fontSize = 45
         labelButton.verticalAlignmentMode = .center
@@ -58,6 +61,15 @@ class GameScene: SKScene {
         labelMenuCloseButton.fontSize = 50
         labelMenuCloseButton.verticalAlignmentMode = .center
         labelMenuCloseButton.fontColor = .white
+        
+        let playerNode = SKSpriteNode(imageNamed: "Warrior_Idle_1")
+        playerNode.position = CGPoint(x: 0, y: 0)
+        playerNode.size = CGSize(width: playerNode.size.width * 10, height: playerNode.size.height * 10)
+        self.addChild(playerNode)
+        
+        playerStateMachine = GKStateMachine(states: [
+            PlayerIdle(playerNode: playerNode)
+        ])
         
         let button = SKButtonNode(image: imageButton, label: labelButton, action: {
             self.numSeguidores += 1 * self.coefGanhoSeguidores
@@ -96,6 +108,8 @@ class GameScene: SKScene {
         self.addChild(buttonMenu)
         self.addChild(labelDinheiro)
         self.addChild(labelSeguidores)
+        
+        playerStateMachine?.enter(PlayerIdle.self)
     }
     
     override func update(_ currentTime: TimeInterval) {
