@@ -23,7 +23,7 @@ class GameScene: SKScene {
     
 //    let imageButton = SKSpriteNode(color: .blue, size: .init(width: 100, height: 100))
     let labelButton = SKLabelNode(text: "")
-    let labelDinheiro = SKLabelNode(text: "0")
+    let labelDinheiro = SKLabelNode(text: "$0")
     let labelSeguidores = SKLabelNode(text: "0")
     
     let imageMenuButton = SKSpriteNode(color: .blue, size: .init(width: 100, height: 100))
@@ -73,7 +73,7 @@ class GameScene: SKScene {
         
         let button = SKButtonNode(image: playerNode, label: labelButton, action: {
             self.numSeguidores += 1 * self.coefGanhoSeguidores
-            self.labelSeguidores.text = "\(self.numSeguidores)"
+            self.labelSeguidores.text = "\(self.retornarFormatado(self.numSeguidores))"
         })
         
         let buttonClose = SKButtonNode(image: self.imageMenuCloseButton, label: self.labelMenuCloseButton, action: {
@@ -93,7 +93,7 @@ class GameScene: SKScene {
             if self.numDinheiro > 10{
                 self.numDinheiro -= 10
                 self.coefGanhoSeguidores += 1
-                self.labelDinheiro.text = "\(self.numDinheiro)"
+                self.labelDinheiro.text = "$\(self.retornarFormatado(self.numDinheiro))"
             }
         })
         
@@ -118,8 +118,20 @@ class GameScene: SKScene {
         }
         if (currentTime - timer) >= 1{
             self.numDinheiro += self.numSeguidores * self.coefGanhoDinheiro
-            self.labelDinheiro.text = "\(numDinheiro)"
+            self.labelDinheiro.text = "$\(retornarFormatado(numDinheiro))"
             timer = currentTime
+        }
+    }
+    
+    func retornarFormatado(_ num : Double) -> String{
+        if num > 1000000000{
+            return "\(String(format:"%.1f",num/1000000000))B"
+        }else if num > 1000000{
+            return "\(String(format:"%.1f",num/1000000))M"
+        }else if num > 1000{
+            return "\(String(format:"%.1f",num/1000))K"
+        }else{
+            return "\(Int(num))"
         }
     }
 }
