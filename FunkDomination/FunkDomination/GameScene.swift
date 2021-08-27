@@ -18,6 +18,10 @@ class GameScene: SKScene {
     var numSeguidores = 0.0
     var coefGanhoDinheiro = 1.0
     var coefGanhoSeguidores = 1.0
+    var coefGanhoSeguidoresTempo = 0.01
+    var valorPzz = 20.0
+    var valorFa = 20.0
+    
     var timer = TimeInterval.init(10000000)
     
     let labelButton = SKLabelNode(text: "")
@@ -30,30 +34,26 @@ class GameScene: SKScene {
     let imageFundoSeguidores = SKSpriteNode(color: .white, size: .init(width: 330, height: 100))
     let labelSeguidores = SKLabelNode(text: "0")
     
-    let imageMenuButton = SKSpriteNode(color: .white, size: .init(width: 100, height: 100))
-    let labelMenuButton = SKLabelNode(text: "+")
-    
-    let imageMenuCloseButton = SKSpriteNode(color: .white, size: .init(width: 100, height: 100))
-    let labelMenuCloseButton = SKLabelNode(text: "X")
-    
-    let imageUpdateFundoVerdeFa = SKSpriteNode(color: .green, size: .init(width: 330, height: 75))
+    let imageUpdateFundoVerdeFa = SKSpriteNode(color: .init(cgColor: #colorLiteral(red: 0.7137254902, green: 0.862745098, blue: 0.1529411765, alpha: 1)), size: .init(width: 330, height: 75))
     let imageTaxaFundoBrancoFa = SKSpriteNode(color: .white, size: .init(width: 330, height: 75))
     let labelTaxaFa = SKLabelNode(text: "0 / h")
-    let labelUpdateFa = SKLabelNode(text: "$0")
+    let labelUpdateFa = SKLabelNode(text: "$0.0")
     let imageUpdateFa = SKSpriteNode(texture: .init(image: .init(systemName: "arrow.up")!))
     let imageUpdateSeguidores = SKSpriteNode(imageNamed: "pessoa")
     
-    let imageUpdateFundoVerdePzz = SKSpriteNode(color: .green, size: .init(width: 330, height: 75))
+    let imageUpdateFundoVerdePzz = SKSpriteNode(color: .init(cgColor: #colorLiteral(red: 0.7137254902, green: 0.862745098, blue: 0.1529411765, alpha: 1)), size: .init(width: 330, height: 75))
     let imageTaxaFundoBrancoPzz = SKSpriteNode(color: .white, size: .init(width: 330, height: 75))
     let labelTaxaPzz = SKLabelNode(text: "0 / h")
-    let labelUpdatePzz = SKLabelNode(text: "$0")
+    let labelUpdatePzz = SKLabelNode(text: "$0.0")
     let imageUpdatePzz = SKSpriteNode(texture: .init(image: .init(systemName: "arrow.up")!))
     let imageUpdateDinheiro = SKSpriteNode(imageNamed: "dindin")
     
-    let menu = SKSpriteNode(color: .green, size: .init(width: 650, height: 600))
-    
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        labelUpdateFa.text = "$\(retornarFormatado(valorFa))"
+        labelUpdatePzz.text = "$\(retornarFormatado(valorPzz))"
+        labelTaxaFa.text = "\(retornarFormatado(numSeguidores*coefGanhoSeguidores)) / h"
+        labelTaxaPzz.text = "\(retornarFormatado(numDinheiro*coefGanhoDinheiro)) / h"
         
         let background = SKSpriteNode(imageNamed: "bg")
         background.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -61,21 +61,9 @@ class GameScene: SKScene {
         background.zPosition = -100
         addChild(background)
         
-        menu.position = CGPoint(x: 0, y: 0)
-        menu.isHidden = true
-        menu.zPosition = 100
-        
         labelButton.fontSize = 45
         labelButton.verticalAlignmentMode = .center
         labelButton.fontColor = .white
-        
-        labelMenuButton.fontSize = 70
-        labelMenuButton.verticalAlignmentMode = .center
-        labelMenuButton.fontColor = .black
-        
-        labelMenuCloseButton.fontSize = 50
-        labelMenuCloseButton.verticalAlignmentMode = .center
-        labelMenuCloseButton.fontColor = .black
         
         labelDinheiro.fontSize = 50
         labelDinheiro.verticalAlignmentMode = .center
@@ -97,52 +85,47 @@ class GameScene: SKScene {
         
         let button = SKButtonNode(image: playerNode, label: labelButton, action: {
             self.numSeguidores += 1 * self.coefGanhoSeguidores
+            self.labelTaxaPzz.text = "\(self.retornarFormatado(self.numSeguidores*self.coefGanhoDinheiro)) / h"
             self.labelSeguidores.text = "\(self.retornarFormatado(self.numSeguidores))"
-        })
-        
-        let buttonClose = SKButtonNode(image: self.imageMenuCloseButton, label: self.labelMenuCloseButton, action: {
-            self.menu.isHidden = true
-            self.menuOpen = false
-        })
-        
-        let buttonMenu = SKButtonNode(image: imageMenuButton, label: labelMenuButton, action: {
-            if !self.menuOpen{
-                buttonClose.position = CGPoint(x: 0, y: -250)
-                self.menu.isHidden = false
-                self.menuOpen = true
-            }
-        })
-        
-        let menuLabel = SKLabelMenuNode("Publicação nas redes sociais $ 10", position: .init(x: 0, y: 300), action: {
-            if self.numDinheiro > 10{
-                self.numDinheiro -= 10
-                self.coefGanhoSeguidores += 1
-                self.labelDinheiro.text = "\(self.retornarFormatado(self.numDinheiro))"
-            }
         })
         
         let labelDinheiroCustom = SKLabelTelaInicial(fundo: self.imageFundoDinheiro, label: self.labelDinheiro, imagem: self.imageDinheiro)
         let labelSeguidoresCustom = SKLabelTelaInicial(fundo: self.imageFundoSeguidores, label: self.labelSeguidores, imagem: self.imageSeguidores)
         
         let buttonUpdateCustomFa = SKButtonUpdateNode(fundoBranco: self.imageTaxaFundoBrancoFa, fundoVerde: self.imageUpdateFundoVerdeFa, labelTaxa: self.labelTaxaFa, labelUpdate: self.labelUpdateFa, imagemTaxa: self.imageUpdateSeguidores, imagemUpdate: self.imageUpdateFa, position: .init(x: -90, y: -235), action: {
-            print("Upadate Fã")
+            if self.numDinheiro >= self.valorFa{
+                
+                self.numDinheiro -= self.valorFa
+                self.valorFa += self.valorFa*0.8
+                self.coefGanhoSeguidoresTempo += 0.02
+                
+                self.labelSeguidores.text = "\(self.retornarFormatado(self.numSeguidores))"
+                self.labelUpdateFa.text = "$\(self.retornarFormatado(self.valorFa))"
+                self.labelTaxaFa.text = "\(self.retornarFormatado(self.numSeguidores*self.coefGanhoSeguidoresTempo)) / h"
+                
+            }
         })
         
         let buttonUpdateCustomPzz = SKButtonUpdateNode(fundoBranco: self.imageTaxaFundoBrancoPzz, fundoVerde: self.imageUpdateFundoVerdePzz, labelTaxa: self.labelTaxaPzz, labelUpdate: self.labelUpdatePzz, imagemTaxa: self.imageUpdateDinheiro, imagemUpdate: self.imageUpdatePzz, position: .init(x: 90, y: -235), action: {
-            print("Upadate Paparazzi")
+            if self.numDinheiro >= self.valorPzz{
+                
+                self.numDinheiro -= self.valorPzz
+                self.valorPzz += self.valorPzz*0.8
+                self.coefGanhoDinheiro += 0.2
+                
+                self.labelDinheiro.text = "\(self.retornarFormatado(self.numDinheiro))"
+                self.labelUpdatePzz.text = "$\(self.retornarFormatado(self.valorPzz))"
+                self.labelTaxaPzz.text = "\(self.retornarFormatado(self.numSeguidores*self.coefGanhoDinheiro)) / h"
+                
+            }
         })
         
         button.position = CGPoint(x: 0, y: 0)
-        buttonMenu.position = CGPoint(x: 295, y: -300)
         
         labelDinheiroCustom.position = CGPoint(x: 180, y: 500)
         labelSeguidoresCustom.position = CGPoint(x: -180, y: 500)
         
-        self.addChild(menu)
-        menu.addChild(buttonClose)
-        menu.addChild(menuLabel)
         self.addChild(button)
-        self.addChild(buttonMenu)
         self.addChild(labelDinheiroCustom)
         self.addChild(labelSeguidoresCustom)
         
@@ -158,7 +141,9 @@ class GameScene: SKScene {
         }
         if (currentTime - timer) >= 1{
             self.numDinheiro += self.numSeguidores * self.coefGanhoDinheiro
+            self.numSeguidores += self.numSeguidores * self.coefGanhoSeguidoresTempo
             self.labelDinheiro.text = "\(retornarFormatado(numDinheiro))"
+            self.labelSeguidores.text = "\(retornarFormatado(numSeguidores))"
             timer = currentTime
         }
     }
