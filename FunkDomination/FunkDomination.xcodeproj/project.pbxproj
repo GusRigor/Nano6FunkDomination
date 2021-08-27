@@ -20,6 +20,7 @@
 		1CEE865026D7E16800303560 /* PlayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE864F26D7E16800303560 /* PlayerAction.swift */; };
 		1CEE865226D7E1B600303560 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865126D7E1B600303560 /* ArrayExtension.swift */; };
 		1CEE865426D8264800303560 /* SKLabelTelaInicial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */; };
+		1CEE865926D92E7800303560 /* SKButtonUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865826D92E7800303560 /* SKButtonUpdate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		1CEE864F26D7E16800303560 /* PlayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAction.swift; sourceTree = "<group>"; };
 		1CEE865126D7E1B600303560 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabelTelaInicial.swift; sourceTree = "<group>"; };
+		1CEE865826D92E7800303560 /* SKButtonUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButtonUpdate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,11 +77,9 @@
 				1CEE860D26D5671500303560 /* Actions.sks */,
 				1CEE860F26D5671500303560 /* GameScene.swift */,
 				1CEE861126D5671500303560 /* GameViewController.swift */,
-				1CEE865126D7E1B600303560 /* ArrayExtension.swift */,
-				1CEE864F26D7E16800303560 /* PlayerAction.swift */,
-				1CEE864B26D6D47900303560 /* SKButton.swift */,
-				1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */,
-				1CEE864D26D6D8D700303560 /* SKLabelMenu.swift */,
+				1CEE865726D92E0900303560 /* Extensions */,
+				1CEE865626D92DF100303560 /* SKCustomAction */,
+				1CEE865526D92DC100303560 /* SKCustomNode */,
 				1CEE861E26D56AC400303560 /* Tabela */,
 				1CEE861326D5671500303560 /* Main.storyboard */,
 				1CEE861626D5671700303560 /* Assets.xcassets */,
@@ -94,6 +94,33 @@
 				1CEE861F26D56BC700303560 /* TabelaViewController.swift */,
 			);
 			path = Tabela;
+			sourceTree = "<group>";
+		};
+		1CEE865526D92DC100303560 /* SKCustomNode */ = {
+			isa = PBXGroup;
+			children = (
+				1CEE864B26D6D47900303560 /* SKButton.swift */,
+				1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */,
+				1CEE864D26D6D8D700303560 /* SKLabelMenu.swift */,
+				1CEE865826D92E7800303560 /* SKButtonUpdate.swift */,
+			);
+			path = SKCustomNode;
+			sourceTree = "<group>";
+		};
+		1CEE865626D92DF100303560 /* SKCustomAction */ = {
+			isa = PBXGroup;
+			children = (
+				1CEE864F26D7E16800303560 /* PlayerAction.swift */,
+			);
+			path = SKCustomAction;
+			sourceTree = "<group>";
+		};
+		1CEE865726D92E0900303560 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1CEE865126D7E1B600303560 /* ArrayExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +196,7 @@
 			files = (
 				1CEE864C26D6D47900303560 /* SKButton.swift in Sources */,
 				1CEE861026D5671500303560 /* GameScene.swift in Sources */,
+				1CEE865926D92E7800303560 /* SKButtonUpdate.swift in Sources */,
 				1CEE862026D56BC700303560 /* TabelaViewController.swift in Sources */,
 				1CEE865226D7E1B600303560 /* ArrayExtension.swift in Sources */,
 				1CEE865426D8264800303560 /* SKLabelTelaInicial.swift in Sources */,

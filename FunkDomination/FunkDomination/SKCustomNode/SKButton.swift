@@ -48,27 +48,3 @@ class SKButtonNode: SKNode{
     }
     
 }
-
-
-extension SKSpriteNode {
-    func addTo(parent:SKNode?, withRadius:CGFloat) {
-        guard parent != nil else { return }
-        guard  withRadius>0.0 else {
-            parent!.addChild(self)
-            return
-        }
-        let radiusShape = SKShapeNode.init(rect: CGRect.init(origin: parent!.position, size: size), cornerRadius: withRadius)
-        radiusShape.position = parent!.position
-        radiusShape.lineWidth = 2.0
-        radiusShape.fillColor = UIColor.red
-        radiusShape.strokeColor = UIColor.red
-        radiusShape.zPosition = 2
-        radiusShape.position = parent!.position
-        let cropNode = SKCropNode()
-        cropNode.position = self.position
-        cropNode.zPosition = 3
-        cropNode.addChild(self)
-        cropNode.maskNode = radiusShape
-        parent!.addChild(cropNode)
-    }
-}
