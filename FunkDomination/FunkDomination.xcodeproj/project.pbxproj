@@ -21,6 +21,8 @@
 		1CEE865226D7E1B600303560 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865126D7E1B600303560 /* ArrayExtension.swift */; };
 		1CEE865426D8264800303560 /* SKLabelTelaInicial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */; };
 		1CEE865926D92E7800303560 /* SKButtonUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE865826D92E7800303560 /* SKButtonUpdate.swift */; };
+		1CEE869D26D97AAA00303560 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1CEE869B26D97AAA00303560 /* fire.sks */; };
+		1CEE869E26D97AAA00303560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CEE869C26D97AAA00303560 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		1CEE865126D7E1B600303560 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1CEE865326D8264800303560 /* SKLabelTelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabelTelaInicial.swift; sourceTree = "<group>"; };
 		1CEE865826D92E7800303560 /* SKButtonUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButtonUpdate.swift; sourceTree = "<group>"; };
+		1CEE869B26D97AAA00303560 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
+		1CEE869C26D97AAA00303560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				1CEE864F26D7E16800303560 /* PlayerAction.swift */,
+				1CEE869B26D97AAA00303560 /* fire.sks */,
+				1CEE869C26D97AAA00303560 /* Assets.xcassets */,
 			);
 			path = SKCustomAction;
 			sourceTree = "<group>";
@@ -182,7 +188,9 @@
 			files = (
 				1CEE861526D5671500303560 /* Main.storyboard in Resources */,
 				1CEE860C26D5671500303560 /* GameScene.sks in Resources */,
+				1CEE869D26D97AAA00303560 /* fire.sks in Resources */,
 				1CEE861726D5671700303560 /* Assets.xcassets in Resources */,
+				1CEE869E26D97AAA00303560 /* Assets.xcassets in Resources */,
 				1CEE860E26D5671500303560 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

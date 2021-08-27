@@ -44,6 +44,13 @@ class SKButtonNode: SKNode{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let particles = SKEmitterNode(fileNamed: "fire"), let location = touches.first?.location(in: self){
+            particles.position = location
+            addChild(particles)
+            
+            let removerAfterDead = SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.removeFromParent()])
+            particles.run(removerAfterDead)
+        }
         self.action?()
     }
     
