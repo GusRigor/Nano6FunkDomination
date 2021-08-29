@@ -75,9 +75,9 @@ class GameScene: SKScene {
         labelSeguidores.fontColor = .black
         imageSeguidores.size = CGSize(width: 50, height: 50)
         
-        let playerNode = SKSpriteNode(imageNamed: "Warrior_Idle_1")
+        let playerNode = SKSpriteNode(imageNamed: "1_Prancheta 1")
         playerNode.position = CGPoint(x: 0, y: 0)
-        playerNode.size = CGSize(width: playerNode.size.width * 10, height: playerNode.size.height * 10)
+        playerNode.size = CGSize(width: playerNode.size.width/5, height: playerNode.size.height/5)
         
         playerStateMachine = GKStateMachine(states: [
             PlayerIdle(playerNode: playerNode)
