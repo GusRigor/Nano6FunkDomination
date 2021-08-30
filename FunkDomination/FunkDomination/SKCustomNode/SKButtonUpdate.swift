@@ -8,6 +8,7 @@
 import SpriteKit
 
 class SKButtonUpdateNode: SKNode{
+    ///Adiciona um SKNode que executa uma ação ao ser pressionado, sendo dividido ao meio para ter duas cores.
     var fundoBranco : SKSpriteNode?
     var fundoVerde : SKSpriteNode?
     var labelTaxa : SKLabelNode?
@@ -26,6 +27,8 @@ class SKButtonUpdateNode: SKNode{
         self.labelUpdate = labelUpdate
         self.imageTaxa = imagemTaxa
         self.imageUpdate = imagemUpdate
+        
+        //Adicionando os atributos aos SKNodes no novo node
         
         self.labelTaxa!.fontSize = 40
         self.labelTaxa!.verticalAlignmentMode = .center
@@ -46,6 +49,7 @@ class SKButtonUpdateNode: SKNode{
         self.fundoVerde?.addChild(self.labelUpdate!)
         self.fundoVerde?.addChild(self.imageUpdate!)
         
+        //Adicionando os SKNodes em um novo Node para dividir ao medio de cada cor
         let mainNode = SKSpriteNode(color: .white, size: .init(width:  330, height: 150))
         mainNode.position = position
         self.fundoBranco?.position = CGPoint(x: 0, y: 37.5)
@@ -53,6 +57,7 @@ class SKButtonUpdateNode: SKNode{
         mainNode.addChild(self.fundoBranco!)
         mainNode.addChild(self.fundoVerde!)
         
+        //adicionar um recorte ao node com as bordas arredondadas
         let radiusShape = SKShapeNode.init(rect: CGRect.init(origin:.init(x: -mainNode.size.width/2, y: -mainNode.size.height/2), size:mainNode.size), cornerRadius: 15)
         radiusShape.position = mainNode.position
         radiusShape.lineWidth = 2.0
@@ -75,6 +80,7 @@ class SKButtonUpdateNode: SKNode{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //executa a clousure passada como parâmetro
         self.action?()
     }
 }

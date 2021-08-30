@@ -15,19 +15,21 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
+            // Carregar o arquivo com a cena do SpriteKit
             if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
+                // Ajusta o aspecto para a tela
                 scene.scaleMode = .aspectFill
                 
-                // Present the scene
+                // Apresenta a cena na tela (view)
                 view.presentScene(scene)
             }
             
+            //Carrega os objetos sem uma ordem, buscando otimização
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
+             
+            //
+//            view.showsFPS = true
+//            view.showsNodeCount = true
         }
     }
     

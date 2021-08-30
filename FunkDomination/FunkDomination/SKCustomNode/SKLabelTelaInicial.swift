@@ -8,6 +8,7 @@
 import SpriteKit
 
 class SKLabelTelaInicial: SKNode {
+    ///Adiciona uma label customizada com fundo e bordas arredondadas
     var fundo : SKSpriteNode?
     var label : SKLabelNode?
     var imagem : SKSpriteNode?
@@ -22,6 +23,7 @@ class SKLabelTelaInicial: SKNode {
         self.fundo?.addChild(label)
         self.isUserInteractionEnabled = true
         
+        //adicionar um recorte ao node com as bordas arredondadas
         let radiusShape = SKShapeNode.init(rect: CGRect.init(origin:.init(x: -fundo.size.width/2, y: -fundo.size.height/2), size:fundo.size), cornerRadius: 10)
         radiusShape.position = fundo.position
         radiusShape.lineWidth = 2.0
